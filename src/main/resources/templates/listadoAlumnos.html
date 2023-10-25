@@ -32,7 +32,8 @@
 				<td class="table-primary" th:text="${alu.estado}"></td>
 			</tr>
 		</table>
-			<input class="form-control" type="button" value="Volver" th:action"@{/index}">
+		    <input class="form-control" type="button" value="Volver" onclick="history.back">
+			<input class="form-control" type="button" value="Actualizar" onclick="location.reload">
 	</div>
 </body>
 </html>
