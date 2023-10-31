@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.ies6.util.ListadoAlumnos;
@@ -32,5 +33,20 @@ public class AlumnoController {
 		ModelAndView modelView = new ModelAndView ("listadoAlumnos");
 		modelView.addObject("listado", ListadoAlumnos.getListado());
 		return modelView;	
+	}
+	
+	@GetMapping({"/eliminarAlumno/{dni}"})
+	public ModelAndView eliminarAlumno (@PathVariable Integer dni) {
+		
+		for (int i = 0; i<ListadoAlumnos.getListado().size(); i++) {
+			if (ListadoAlumnos.getListado().get(i).getDni().equals(dni)) {
+				//ListadoAlumnos.getListado().get(i).setEstado(false);
+				ListadoAlumnos.getListado().remove(i);
+			}
+		}
+			
+		ModelAndView modelView = new ModelAndView ("listadoAlumnos");
+		modelView.addObject("listado", ListadoAlumnos.getListado());
+		return modelView;
 	}
 }

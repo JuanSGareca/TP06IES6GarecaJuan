@@ -22,9 +22,9 @@
 			<label class="form-label" for="direccioniudad">Ciudad:</label>
 			<input class="form-control" type="text" id="direccionCiudad" th:field="*{addressCity}"><br>
 			<label class="form-label" for="fechaNac">Fecha Nacimiento:</label>
-			<input class="form-control" type="date" id="fechaNac" th:field="*{fechaNac}"><br>
+			<input class="form-control" type="date" id="fechaNac" th:field="*{fechaNac}" required><br>
 			<label class="form-label" for="dni">DNI:</label>
-			<input class="form-control" type="text" id="dni" th:field="*{dni}"><br>
+			<input class="form-control" type="number" id="dni" th:field="*{dni}" required><br>
 			<label class="form-label" for="estado">Estado:</label>
 			<input class="form-control" type="checkbox" id="estado" th:field="*{estado}"><br>
 			

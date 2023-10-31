@@ -19,6 +19,7 @@
 				<th class="table-light">Edad</thclass="table-light">
 				<th class="table-dark">DNI</th>
 				<th class="table-primary">Estado</th>
+				<th class="table-secondary">Edicion</th>
 			</tr>
 			<tr th:each="alu:${listado}">
 				<td class="table-primary" th:text="${alu.name}"></td>
@@ -30,6 +31,10 @@
 				<td class="table-light" th:text="${alu.getEdad()}"></td>
 				<td class="table-dark" th:text="${alu.dni}"></td>
 				<td class="table-primary" th:text="${alu.estado}"></td>
+				<td><a type="button" class="btn btn-primary"
+				href="#"
+				th:href="@{'/eliminarAlumno/'+${alu.dni}}"
+				>Eliminar</a></td>
 			</tr>
 		</table>
 		    <input class="form-control" type="button" value="Volver" onclick="history.back">
