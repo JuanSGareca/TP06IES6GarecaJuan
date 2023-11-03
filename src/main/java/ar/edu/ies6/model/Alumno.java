@@ -4,15 +4,28 @@ import java.time.LocalDate;
 import java.time.Period;
 
 import org.springframework.stereotype.Component;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 @Component
+@Entity
 public class Alumno {
+	@Column
 	private String name;
+	@Column
 	private String lastname;
+	@Column
 	private String addressStreet;
+	@Column
 	private Integer addressNumber;
+	@Column
 	private String addressCity;
+	@Column
 	private LocalDate fechaNac;
+	@Id
 	private Integer dni;
+	@Column
 	private Boolean estado;
 	
 	public Alumno() {
