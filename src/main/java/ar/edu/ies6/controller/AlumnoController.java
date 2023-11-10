@@ -1,26 +1,30 @@
 package ar.edu.ies6.controller;
 
-import java.time.LocalDate;
 import ar.edu.ies6.model.Alumno;
-import java.util.List;
-import java.util.ArrayList;
+import ar.edu.ies6.service.AlumnoService;
+import java.lang.Integer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ar.edu.ies6.util.ListadoAlumnos;
+
 
 @Controller
 public class AlumnoController {
 	
+	@Autowired
+	Alumno alu;
+	
+	@Autowired
+	AlumnoService alumnoService;
+	
 	@GetMapping({"/index", "/", "/home", "/alumno"})
 	public ModelAndView cargarAlumno () {
-		
-		Alumno alu = new Alumno();		
+					
 		ModelAndView modelView = new ModelAndView ("index");
 		modelView.addObject("alumno", alu);
 		return modelView;
@@ -29,24 +33,37 @@ public class AlumnoController {
 	@PostMapping("/cargarAlumno")
 	public ModelAndView cargarAlumno (@ModelAttribute("alumno")Alumno alumno) {
 		
-		ListadoAlumnos.getListado().add(alumno);
+		alumnoService.guardarAlumno(alumno);
 		ModelAndView modelView = new ModelAndView ("listadoAlumnos");
-		modelView.addObject("listado", ListadoAlumnos.getListado());
+		modelView.addObject("listado", alumnoService.buscarTodosAlumnos());
 		return modelView;	
 	}
 	
 	@GetMapping({"/eliminarAlumno/{dni}"})
-	public ModelAndView eliminarAlumno (@PathVariable Integer dni) {
-		
-		for (int i = 0; i<ListadoAlumnos.getListado().size(); i++) {
-			if (ListadoAlumnos.getListado().get(i).getDni().equals(dni)) {
-				//ListadoAlumnos.getListado().get(i).setEstado(false);
-				ListadoAlumnos.getListado().remove(i);
-			}
-		}
-			
+	public String eliminarAlumno (@PathVariable Integer dni) throws Exception {	
+		alumnoService.eliminarAlumno(dni);
+		return "redirect:/mostrarListado";
+	}
+	
+	@GetMapping("/mostrarListado")
+	public ModelAndView mostrarAlumnos () {
+		ModelAndView listado = new ModelAndView ("listadoAlumnos");
+		listado.addObject("listado", alumnoService.buscarTodosAlumnos());
+		return listado;
+	}
+	
+	@GetMapping({"/modificarAlumno/{dni}"})
+	public ModelAndView modificarAlumno (@PathVariable Integer dni) throws Exception {
+		ModelAndView modificaAlumno = new ModelAndView ("index");
+			modificaAlumno.addObject("alumno", alumnoService.encontrarUnAlumno(dni));
+		return modificaAlumno;
+	}
+	
+	@PostMapping("/modificarAlumno")
+	public ModelAndView modificarUnAlumno (@ModelAttribute("alumno")Alumno alumno) {
+		alumnoService.guardarAlumno(alumno);
 		ModelAndView modelView = new ModelAndView ("listadoAlumnos");
-		modelView.addObject("listado", ListadoAlumnos.getListado());
-		return modelView;
+		modelView.addObject("listado", alumnoService.buscarTodosAlumnos());
+		return modelView;	
 	}
 }

@@ -34,7 +34,11 @@
 				<td><a type="button" class="btn btn-primary"
 				href="#"
 				th:href="@{'/eliminarAlumno/'+${alu.dni}}"
-				>Eliminar</a></td>
+				>Eliminar</a>
+				<a type="button" class="btn btn-primary"
+				href="#"
+				th:href="@{'/modificarAlumno/'+${alu.dni}}"
+				>Modificar</a></td>
 			</tr>
 		</table>
 		    <input class="form-control" type="button" value="Volver" onclick="history.back">
