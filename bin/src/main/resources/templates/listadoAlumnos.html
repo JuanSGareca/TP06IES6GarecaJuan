@@ -18,6 +18,7 @@
 				<th class="table-info">Fecha de Nacimiento</th>
 				<th class="table-light">Edad</thclass="table-light">
 				<th class="table-dark">DNI</th>
+				<th class="table-primary">Estado</th>
 				<th class="table-secondary">Edicion</th>
 			</tr>
 			<tr th:each="alu:${listado}">
@@ -29,6 +30,7 @@
 				<td class="table-info" th:text="${alu.fechaNac}"></td>
 				<td class="table-light" th:text="${alu.getEdad()}"></td>
 				<td class="table-dark" th:text="${alu.dni}"></td>
+				<td class="table-primary" th:text="${alu.estado}"></td>
 				<td><a type="button" class="btn btn-primary"
 				href="#"
 				th:href="@{'/eliminarAlumno/'+${alu.dni}}"

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Alumnos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+	<h2>Cargar ALUMNOS</h2>
+	<div>
+		<form th:object="${alumno}" th:action="@{/cargarAlumno}" method="post">
+			<label class="form-label" for="nombre">Nombre:</label>
+			<input class="form-control" type="text" id="nombre" th:field="*{name}"><br>
+			<label class="form-label" for="apellido">Apellido:</label>
+			<input class="form-control" type="text" id="apellido" th:field="*{lastname}"><br>
+			<label class="form-label" for="direccionCalle">Calle:</label>
+			<input class="form-control" type="text" id="direccionCalle" th:field="*{addressStreet}"><br>
+			<label class="form-label" for="direccionNumero">Numero:</label>
+			<input class="form-control" type="number" id="direccionNumero" th:field="*{addressNumber}"><br>
+			<label class="form-label" for="direccioniudad">Ciudad:</label>
+			<input class="form-control" type="text" id="direccionCiudad" th:field="*{addressCity}"><br>
+			<label class="form-label" for="fechaNac">Fecha Nacimiento:</label>
+			<input class="form-control" type="date" id="fechaNac" th:field="*{fechaNac}" required><br>
+			<label class="form-label" for="dni">DNI:</label>
+			<input class="form-control" type="number" id="dni" th:field="*{dni}" required><br>
+			
+			<input class="form-control" type="submit" value="Cargar Alumno">
+		</form>
+	</div>
+	</div>
+</body>
+</html>

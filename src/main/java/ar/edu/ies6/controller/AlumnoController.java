@@ -22,10 +22,10 @@ public class AlumnoController {
 	@Autowired
 	AlumnoService alumnoService;
 	
-	@GetMapping({"/index", "/", "/home", "/alumno"})
+	@GetMapping({"/alumno"})
 	public ModelAndView cargarAlumno () {
 					
-		ModelAndView modelView = new ModelAndView ("index");
+		ModelAndView modelView = new ModelAndView ("alumno");
 		modelView.addObject("alumno", alu);
 		return modelView;
 	}
@@ -54,7 +54,7 @@ public class AlumnoController {
 	
 	@GetMapping({"/modificarAlumno/{dni}"})
 	public ModelAndView modificarAlumno (@PathVariable Integer dni) throws Exception {
-		ModelAndView modificaAlumno = new ModelAndView ("index");
+		ModelAndView modificaAlumno = new ModelAndView ("alumno");
 			modificaAlumno.addObject("alumno", alumnoService.encontrarUnAlumno(dni));
 		return modificaAlumno;
 	}

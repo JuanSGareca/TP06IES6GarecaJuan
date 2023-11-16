@@ -11,7 +11,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 @Component
 @Entity
-public class Alumno {
+
+public class Docente {
 	@Column
 	private String name;
 	@Column
@@ -30,7 +31,7 @@ public class Alumno {
 	@Column
 	private Boolean estado;
 	
-	public Alumno() {
+	public Docente() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -105,4 +106,5 @@ public class Alumno {
 		edad= periodo.getYears();
 		return edad;
 	}
-    }
+
+}
