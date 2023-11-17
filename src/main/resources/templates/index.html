@@ -10,11 +10,11 @@
 	<div class="container">
 	<h2>PRINCIPAL</h2>
 	<div>
-		<form th:object="${alumno}" th:action="@{/Alumno}" method="post">
+		<form th:action="@{/alumno}" method="get">
 			<input class="form-control" type="submit" value="Alumno">
 		</form>
 		
-		<form th:object="${docente}" th:action="@{/Docente}" method="post">
+		<form th:action="@{/docente}" method="get">
 			<input class="form-control" type="submit" value="Docente">
 		</form>
 	</div>

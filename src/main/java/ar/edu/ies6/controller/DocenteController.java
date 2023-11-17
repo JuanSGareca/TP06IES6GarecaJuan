@@ -31,11 +31,11 @@ public class DocenteController {
 		return modelView;
 	}
 	
-	@PostMapping("/listaDocente")
+	@PostMapping("/cargarDocente")
 	public ModelAndView cargarDocente (@ModelAttribute("docente")Docente docente) {
 		
 		docenteService.guardarDocente (docente);
-		ModelAndView modelView = new ModelAndView ("listadoDocentes");
+		ModelAndView modelView = new ModelAndView("listadoDocentes");
 		modelView.addObject("listado", docenteService.buscarTodosDocentes());
 		return modelView;	
 	}
@@ -46,7 +46,7 @@ public class DocenteController {
 		return "redirect:/mostrarListado";
 	}
 	
-	@GetMapping("/mostrarListado")
+	@GetMapping("/mostrarListadoDocente")
 	public ModelAndView mostrarDocentes () {
 		ModelAndView listado = new ModelAndView ("listadoDocentes");
 		listado.addObject("listado", docenteService.buscarTodosDocentes());

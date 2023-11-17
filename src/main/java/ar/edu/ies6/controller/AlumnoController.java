@@ -45,7 +45,7 @@ public class AlumnoController {
 		return "redirect:/mostrarListado";
 	}
 	
-	@GetMapping("/mostrarListado")
+	@GetMapping("/mostrarListadoAlumno")
 	public ModelAndView mostrarAlumnos () {
 		ModelAndView listado = new ModelAndView ("listadoAlumnos");
 		listado.addObject("listado", alumnoService.buscarTodosAlumnos());
