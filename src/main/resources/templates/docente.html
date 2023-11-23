@@ -19,15 +19,36 @@
 			<input class="form-control" type="text" id="direccionCalle" th:field="*{addressStreet}"><br>
 			<label class="form-label" for="direccionNumero">Numero:</label>
 			<input class="form-control" type="number" id="direccionNumero" th:field="*{addressNumber}"><br>
-			<label class="form-label" for="direccioniudad">Ciudad:</label>
+			<label class="form-label" for="direccionCiudad">Ciudad:</label>
 			<input class="form-control" type="text" id="direccionCiudad" th:field="*{addressCity}"><br>
 			<label class="form-label" for="fechaNac">Fecha Nacimiento:</label>
 			<input class="form-control" type="date" id="fechaNac" th:field="*{fechaNac}" required><br>
 			<label class="form-label" for="dni">DNI:</label>
 			<input class="form-control" type="number" id="dni" th:field="*{dni}" required><br>
+			<label class="form-label" for="foto">Foto:</label>
+			<input class="form-control" type="file" id="foto" th:field="*{foto}"><br>
 			
 			<input class="form-control" type="submit" value="Cargar Docente">
 		</form>
+		<div>
+		<form th:action="@{/ }" method="get">
+			<input class="form-control" type="submit" value="Atras">
+		</form>
+		<form th:action="@{/docente}" method="get">
+			<input class="form-control" type="submit" value="Actualizar">
+		</form>
+	</div><h3>Menu de Atajos</h3>
+	<div>
+		<form th:action="@{/alumno}" method="get">
+			<input class="form-control" type="submit" value="Ir a Cargar Un Alumno">
+		</form>
+		<form th:action="@{/mostrarListadoAlumno}" method="get">
+			<input class="form-control" type="submit" value="Mostrar los Alumnos">
+		</form>
+		<form th:action="@{/ }" method="get">
+			<input class="form-control" type="submit" value="Menu Prncipal">
+		</form>
+	</div>
 	</div>
 	</div>
 </body>

@@ -23,6 +23,8 @@ public class DocenteController {
 	@Autowired
 	DocenteService docenteService;
 	
+	private int auxiliar;
+	
 	@GetMapping({"/docente"})
 	public ModelAndView cargarDocente () {
 					
@@ -41,9 +43,9 @@ public class DocenteController {
 	}
 	
 	@GetMapping({"/eliminarDocente/{dni}"})
-	public String eliminarDocente (@PathVariable Integer dni) throws Exception {	
+	public String eliminarDocente (@PathVariable Integer dni) throws Exception {
 		docenteService.eliminarDocente(dni);
-		return "redirect:/mostrarListado";
+		return "redirect:/mostrarListadoDocente";
 	}
 	
 	@GetMapping("/mostrarListadoDocente")
@@ -54,17 +56,25 @@ public class DocenteController {
 	}
 	
 	@GetMapping({"/modificarDocente/{dni}"})
-	public ModelAndView modificarAlumno (@PathVariable Integer dni) throws Exception {
-		ModelAndView modificaAlumno = new ModelAndView ("docente");
-			modificaAlumno.addObject("docente", docenteService.encontrarUnDocente(dni));
-		return modificaAlumno;
+	public ModelAndView modificarDocente (@PathVariable Integer dni) throws Exception {
+		auxiliar = dni;
+		ModelAndView modificaDocente = new ModelAndView ("docente");
+			modificaDocente.addObject("docente", docenteService.encontrarUnDocente(dni));
+		return modificaDocente;
 	}
 	
 	@PostMapping("/modificarDocente")
-	public ModelAndView modificarUnAlumno (@ModelAttribute("docente")Docente docente) {
+	public String modificarUnAlumno (@ModelAttribute("docente")Docente docente) throws Exception {
+		if (auxiliar == docente.getDni()) {
 		docenteService.guardarDocente(docente);
 		ModelAndView modelView = new ModelAndView ("listadoDocentes");
 		modelView.addObject("listado", docenteService.buscarTodosDocentes());
-		return modelView;	
+		}else {
+		docenteService.eliminarDocente(auxiliar);
+		docenteService.guardarDocente(docente);
+		ModelAndView modelView1 = new ModelAndView ("listadoDocentes");
+		modelView1.addObject("listado", docenteService.buscarTodosDocentes());
+		}
+		return "redirect:/mostrarListadoDocente";	
 	}
 }

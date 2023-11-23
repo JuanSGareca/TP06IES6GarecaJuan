@@ -10,6 +10,7 @@
 	<div class="container">
 		<table class="table table-striped">
 			<tr>
+				<th class="table-success">Foto</th>
 				<th class="table-primary">First name</th>
 				<th class="table-secondary">Last name</th>
 				<th class="table-success">Calle</th>
@@ -21,6 +22,7 @@
 				<th class="table-secondary">Edicion</th>
 			</tr>
 			<tr th:each="alu:${listado}">
+				<td class="table-success" th:text="${alu.foto}"></td>
 				<td class="table-primary" th:text="${alu.name}"></td>
 				<td class="table-secondary" th:text="${alu.lastname}"></td>
 				<td class="table-success" th:text="${alu.addressStreet}"></td>
@@ -39,8 +41,25 @@
 				>Modificar</a></td>
 			</tr>
 		</table>
-		    <input class="form-control" type="button" value="Volver" onclick="history.back">
-			<input class="form-control" type="button" value="Actualizar" onclick="location.reload">
+				<div>
+		<form th:action="@{/alumno}" method="get">
+			<input class="form-control" type="submit" value="Atras">
+		</form>
+		<form th:action="@{/mostrarListadoAlumno}" method="get">
+			<input class="form-control" type="submit" value="Actualizar">
+		</form>
+	</div><h3>Menu de Atajos</h3>
+	<div>
+		<form th:action="@{/docente}" method="get">
+			<input class="form-control" type="submit" value="Ir a Cargar Un Docente">
+		</form>
+		<form th:action="@{/mostrarListadoDocente}" method="get">
+			<input class="form-control" type="submit" value="Mostrar los Docentes">
+		</form>
+		<form th:action="@{/ }" method="get">
+			<input class="form-control" type="submit" value="Menu Prncipal">
+		</form>
+	</div>
 	</div>
 </body>
 </html>

@@ -42,7 +42,7 @@ public class AlumnoController {
 	@GetMapping({"/eliminarAlumno/{dni}"})
 	public String eliminarAlumno (@PathVariable Integer dni) throws Exception {	
 		alumnoService.eliminarAlumno(dni);
-		return "redirect:/mostrarListado";
+		return "redirect:/mostrarListadoAlumno";
 	}
 	
 	@GetMapping("/mostrarListadoAlumno")

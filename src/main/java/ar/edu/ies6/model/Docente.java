@@ -1,5 +1,6 @@
 package ar.edu.ies6.model;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -17,6 +18,8 @@ public class Docente {
 	private String name;
 	@Column
 	private String lastname;
+	@Column
+	private File Foto;
 	@Column
 	private String addressStreet;
 	@Column
@@ -99,6 +102,14 @@ public class Docente {
 		this.estado = estado;
 	}
 	
+	public File getFoto() {
+		return Foto;
+	}
+
+	public void setFoto(File foto) {
+		Foto = foto;
+	}
+
 	public Integer getEdad() {
 		int edad = 0;
 		LocalDate fechaActual = LocalDate.now();
